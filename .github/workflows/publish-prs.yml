@@ -11,6 +11,7 @@ jobs:
         with:
           SOURCE: latest/index.bs
           DESTINATION: latest/index.html
+          TOOLCHAIN: bikeshed
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master'
