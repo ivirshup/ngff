@@ -12,6 +12,9 @@ jobs:
           SOURCE: latest/index.bs
           DESTINATION: latest/index.html
           TOOLCHAIN: bikeshed
+          # This seems bad, but is in publish:
+          VALIDATE_LINKS: false
+          VALIDATE_MARKUP: false
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         if: github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master'
