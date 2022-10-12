@@ -2,7 +2,7 @@
 name: Add review url
 
 on:
-  pull_request_target:
+  pull_request:
 
 jobs:
   build:
@@ -15,12 +15,31 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: Automated Review URLs
 
+      - name: Get SHA
+        run: echo "##[set-output name=SHA;]$(echo ${{ github.event.pull_request.number }})"
+        id: extract_sha
+
       - uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             #### Automated Review URLs
-            * [render latest/index.bs](http://api.csswg.org/bikeshed/?url=https://raw.githubusercontent.com/ome/ngff/${{ github.head.sha }}/latest/index.bs)
+
+            some other text
+
+            Variable SHA: ${{ steps.extract_sha.outputs.SHA }}
+
+            PR number: ${{ github.event.pull_request.number }}
+
+            github.event.pull_request.number: ${{ github.event.pull_request.number }}
+            github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }}
+            github.event.workflow_run.head_sha: ${{ github.event.workflow_run.head_sha }}
+
+            $GITHUB_SHA
+
+            SHA by variable: ${{ github.head.sha }}
+
+            * [render latest/index.bs](http://api.csswg.org/bikeshed/?url=https://raw.githubusercontent.com/ome/ngff/${{ github.event.pull_request.number }}/latest/index.bs)
             * [diff latest modified](https://services.w3.org/htmldiff?doc1=https%3A%2F%2Fngff.openmicroscopy.org%2Flatest%2F&doc2=http%3A%2F%2Fapi.csswg.org%2Fbikeshed%2F%3Furl%3Dhttps%3A%2F%2Fraw.githubusercontent.com%2Fome%2Fngff%2F${{  github.head.sha }}%2Flatest%2Findex.bs)
           edit-mode: replace

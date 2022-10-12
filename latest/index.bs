@@ -29,6 +29,8 @@ Status Text: (an "editor's draft") will not necessarily be supported.
 Introduction {#intro}
 =====================
 
+Some change to text
+
 Bioimaging science is at a crossroads. Currently, the drive to acquire more,
 larger, preciser spatial measurements is unfortunately at odds with our ability
 to structure and share those measurements with others. During a global pandemic
