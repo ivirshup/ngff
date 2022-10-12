@@ -22,6 +22,8 @@ jobs:
           body: |
             #### Automated Review URLs
 
+            some other text
+
             $GITHUB_SHA
 
             * [render latest/index.bs](http://api.csswg.org/bikeshed/?url=https://raw.githubusercontent.com/ome/ngff/${{ github.head.sha }}/latest/index.bs)
