@@ -30,7 +30,6 @@ jobs:
 
             Variable SHA: ${{ steps.extract_sha.outputs.SHA }}
 
-            ${{ GITHUB_SHA }}
             $GITHUB_SHA
 
             SHA by variable: ${{ github.head.sha }}
